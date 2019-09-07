@@ -17,9 +17,7 @@ class TravelEvent(Base):
         return self.description
 
 
-if __name__ == '__main__':
-    engine = create_engine('mysql://admin:Therion01@master-tools.c90m93uasd0o.us-east-2.rds.amazonaws.com/master-tools')
+def get_session():
+    engine = create_engine('mysql://root:test@127.0.0.1:3306/master-tools')
     Session = sessionmaker(bind=engine)
-    session = Session()
-    for event in session.query(TravelEvent).order_by(TravelEvent.id):
-        print(event.title)
+    return Session()
