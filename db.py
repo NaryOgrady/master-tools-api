@@ -12,9 +12,9 @@ class TravelEvent(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     description = Column(String)
-
-    def __repr(self):
-        return self.description
+    low = Column(Integer)
+    high = Column(Integer)
+    option = Column(String)
 
 
 def get_session():

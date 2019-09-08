@@ -12,8 +12,21 @@ def status():
 @app.route('/travel-event')
 def travel_event():
     service = TravelEventService()
-    data = service.get_travel_event()
-    return data.title
+    response_data = service.get_travel_events()
+    return {
+        'morning': {
+            'title': response_data['morning'].title,
+            'description': response_data['morning'].description
+        },
+        'afternoon': {
+            'title': response_data['afternoon'].title,
+            'description': response_data['afternoon'].description
+        },
+        'night': {
+            'title': response_data['night'].title,
+            'description': response_data['night'].description
+        }
+    }
 
 
 if __name__ == '__main__':
